@@ -1,64 +1,90 @@
-### Guía práctica: Flujo básico de Git en un proyecto de Estructura de Datos
+##Guía práctica: Flujo completo de Git en un proyecto de Estructura de Datos
 
-#Este documento describe paso a paso el proceso de creación de una rama,
-#agregar cambios, hacer commits y subirlos a GitHub.
+#Incluye:
+#- Crear y cambiar ramas
+#- Agregar código y subirlo
+#- Significado de colores en VS Code
+#- Errores comunes
+#- Cómo verificar tus cambios en GitHub
 
-#Comandos ejecutados en la terminal:
-
+# ------------------------------------------------------------------
 # 1. Verificar el estado actual del repositorio
-# --------------------------------------------
+# ------------------------------------------------------------------
 # Muestra en qué rama estás y si hay cambios pendientes por guardar.
-# Comando:
-# git status
 print("git status -> muestra el estado actual del repositorio")
 
+# ------------------------------------------------------------------
+# 2. Crear una nueva rama y cambiarse a ella
+# ------------------------------------------------------------------
+# git checkout -b <nombre_rama> -> crea y mueve a la nueva rama
+print("git checkout -b development/unidad1 -> crea y mueve a la rama 'development/unidad1'")
 
-# 2. Ver las ramas existentes en el repositorio
-# ---------------------------------------------
-# Lista todas las ramas locales y marca con * la rama actual.
-# Comando:
-# git branch
-print("git branch -> muestra las ramas locales y resalta en cuál estás trabajando")
+# ------------------------------------------------------------------
+# 3. Cambiar a una rama existente
+# ------------------------------------------------------------------
+# Si la rama ya existe, solo necesitas:
+print("git checkout development/unidad1 -> cambia a la rama 'development/unidad1'")
 
+# ------------------------------------------------------------------
+# 4. Ver las ramas existentes
+# ------------------------------------------------------------------
+# git branch -> lista las ramas locales, la actual aparece con '*'
+print("git branch -> muestra todas las ramas locales y cuál estás usando")
 
-# 3. Crear y cambiarse a una nueva rama
-# -------------------------------------
-# Se crea una rama para trabajar de manera independiente (en este caso: unidad1).
-# Comando:
-# git checkout -b development/unidad1
-print("git checkout -b development/unidad1 -> crea y mueve a la nueva rama 'development/unidad1'")
+# ------------------------------------------------------------------
+# 5. Agregar cambios de un archivo al staging
+# ------------------------------------------------------------------
+# Después de modificar un archivo:
+print("git add src/com.mx.curso/unidad1/basico.py -> agrega cambios al área de preparación")
 
+# ------------------------------------------------------------------
+# 6. Crear un commit con mensaje descriptivo
+# ------------------------------------------------------------------
+print('git commit -m "Agregué el código a basico.py" -> guarda los cambios en la historia local de Git')
 
-# 4. Agregar los cambios al área de preparación (staging area)
-# ------------------------------------------------------------
-# Se añaden los archivos modificados o creados.
-# Comando:
-# git add .
-print("git add . -> agrega todos los cambios al área de preparación")
+# ------------------------------------------------------------------
+# 7. Subir los cambios a GitHub
+# ------------------------------------------------------------------
+print("git push origin development/unidad1 -> sube los cambios de la rama al remoto")
 
+# ------------------------------------------------------------------
+# 8. Ver tus cambios en GitHub
+# ------------------------------------------------------------------
+# 1. Ir a tu repositorio en GitHub: https://github.com/danielabvg/EstructuraDatos
+# 2. Cambiar a la rama correcta usando el menú desplegable que por defecto dice 'main'.
+# 3. Seleccionar: development/unidad1
+# 4. Navegar a src/com.mx.curso/unidad1/basico.py para ver tu código actualizado
+print("En GitHub, cambia a la rama 'development/unidad1' y revisa tu archivo basico.py")
 
-# 5. Crear un commit con un mensaje descriptivo
-# ---------------------------------------------
-# Guarda los cambios en la historia de Git con un mensaje.
-# Comando:
-# git commit -m "Ejemplo de arreglos"
-print('git commit -m "Ejemplo de arreglos" -> crea un commit con el mensaje')
+# ------------------------------------------------------------------
+# 9. Colores de Git en VS Code
+# ------------------------------------------------------------------
+# U (verde)    = Untracked (archivo nuevo, Git no lo sigue todavía)
+# M (amarillo) = Modified (archivo modificado, aún no agregado)
+# A (verde)    = Added (archivo agregado y listo para commit)
+# M (azul)     = Modificado y agregado (listo para commit)
+print("VS Code: M amarilla = modificado, falta 'git add'")
 
+# ------------------------------------------------------------------
+# 10. Cómo actualizar un archivo ya existente
+# ------------------------------------------------------------------
+# Pasos:
+# 1. Guardar el archivo modificado
+# 2. git status -> confirmar que aparece como 'modified'
+# 3. git add <archivo>
+# 4. git commit -m "mensaje descriptivo"
+# 5. git push origin <rama>
+print("Para actualizar un archivo en GitHub: git add -> git commit -> git push")
 
-# 6. Subir los cambios al repositorio remoto
-# ------------------------------------------
-# Se suben los cambios de la nueva rama al repositorio en GitHub.
-# Comando:
-# git push -u origin development/unidad1
-print("git push -u origin development/unidad1 -> sube la nueva rama al remoto y la vincula")
-
-
-# 7. Crear un Pull Request (PR)
-# ------------------------------
-# Una vez subida la rama, GitHub sugiere crear un Pull Request para fusionar los cambios
-# en la rama principal (main).
-# Enlace sugerido:
-# https://github.com/danielabvg/EstructuraDatos/pull/new/development/unidad1
-print("Ir a GitHub y crear un Pull Request desde la rama 'development/unidad1' hacia 'main'")
-
-#ejemplo!
+# ------------------------------------------------------------------
+# 11. Errores comunes
+# ------------------------------------------------------------------
+# "fatal: a branch named 'development/unidad1' already exists"
+# -> Solución: git checkout development/unidad1
+#
+# "dquote>" (comillas abiertas)
+# -> Solución: cerrar comillas o Ctrl+C
+#
+# "nothing to commit, working tree clean"
+# -> Significa que no hay cambios nuevos que guardar
+print("Mensajes comunes: revisa si hay cambios pendientes o si ya todo está en Git")
